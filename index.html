@@ -288,6 +288,123 @@
   .links-row a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
   .links-row a .arrow { font-size: 10px; opacity: 0.7; }
 
+  /* ── ARCHITECTURE DIAGRAMS ── */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .arch-card {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .arch-card-header {
+    background: var(--accent);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .arch-card-header a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.2px;
+  }
+  .arch-card-header a:hover { text-decoration: underline; }
+  .arch-step-count {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .arch-steps {
+    padding: 12px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .arch-step {
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+  .arch-step .cat {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1px;
+    opacity: 0.65;
+  }
+  .arch-step .label { font-weight: 600; }
+  .arch-step .unique {
+    font-size: 9px;
+    background: #FFF3CD;
+    color: #996600;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 1px 5px;
+    margin-left: 5px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .arch-arrow {
+    text-align: center;
+    color: var(--rule);
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 2px 0;
+    user-select: none;
+  }
+  .step-entry    { background: #EBF5FF; border-left: 3px solid #5BA5D9; color: #1A4A6E; }
+  .step-seg      { background: #FFF4EA; border-left: 3px solid #E0893A; color: #7A3A00; }
+  .step-needs    { background: #F2EDFF; border-left: 3px solid #7B52D4; color: #3B1A8A; }
+  .step-trust    { background: #EBF9F2; border-left: 3px solid #2ECC71; color: #1A6640; }
+  .step-momentum { background: #FFFBE8; border-left: 3px solid #D4B22E; color: #6B5000; }
+  .step-co       { background: #FDE8F5; border-left: 3px solid #D45BAE; color: #7A1A5A; }
+  .step-plan     { background: #EAF0FF; border-left: 3px solid #4B7FD4; color: #1A3A8A; }
+  .step-pregate  { background: #FFF0E8; border-left: 3px solid #D47B2E; color: #7A3800; }
+  .step-paywall  { background: #F2F2F2; border-left: 3px solid #888; color: #333; }
+
+  .arch-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    font-size: 10.5px;
+  }
+  .arch-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--mid);
+  }
+  .arch-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 860px) {
+    .arch-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .arch-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── FOOTER ── */
   .page-footer {
     text-align: center;
@@ -524,6 +641,199 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- FUNNEL ARCHITECTURE DIAGRAMS -->
+  <div class="section-head">Funnel Architecture — Simplified Step-by-Step Flow</div>
+
+  <div class="arch-legend">
+    <span class="arch-legend-item"><span class="arch-legend-dot" style="background:#5BA5D9"></span>Entry</span>
+    <span class="arch-legend-item"><span class="arch-legend-dot" style="background:#E0893A"></span>Segmentation</span>
+    <span class="arch-legend-item"><span class="arch-legend-dot" style="background:#7B52D4"></span>Needs Diagnosis</span>
+    <span class="arch-legend-item"><span class="arch-legend-dot" style="background:#2ECC71"></span>Trust &amp; Warmth</span>
+    <span class="arch-legend-item"><span class="arch-legend-dot" style="background:#D4B22E"></span>Momentum</span>
+    <span class="arch-legend-item"><span class="arch-legend-dot" style="background:#D45BAE"></span>Co-Creation</span>
+    <span class="arch-legend-item"><span class="arch-legend-dot" style="background:#4B7FD4"></span>Plan Builder</span>
+    <span class="arch-legend-item"><span class="arch-legend-dot" style="background:#D47B2E"></span>Pre-Paywall Gate</span>
+    <span class="arch-legend-item"><span class="arch-legend-dot" style="background:#888"></span>Paywall</span>
+    <span class="arch-legend-item"><span style="background:#FFF3CD;color:#996600;font-weight:700;border-radius:3px;padding:1px 5px;font-size:10px;">★ unique</span>&nbsp;= present in ≤2 funnels</span>
+  </div>
+
+  <div class="arch-grid">
+
+    <!-- BEDUCATED -->
+    <div class="arch-card">
+      <div class="arch-card-header">
+        <a href="https://app.beducated.com/funnel/608/intro-gender" target="_blank">Beducated ↗</a>
+        <span class="arch-step-count">9 steps</span>
+      </div>
+      <div class="arch-steps">
+        <div class="arch-step step-entry"><span class="cat">Entry</span><span class="label">Focus area multi-select (no "Get Started" button)</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-seg"><span class="cat">Segmentation</span><span class="label">Gender question</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Multi-select desires &amp; interests</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Fantasy &amp; desire mapping</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-trust"><span class="cat">Trust &amp; Warmth</span><span class="label">Empathy interstitial · social proof · expert credentialing</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-momentum"><span class="cat">Momentum</span><span class="label">Progress bar throughout</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-plan"><span class="cat">Plan Builder</span><span class="label">Animated plan-builder loader</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-pregate"><span class="cat">Pre-Paywall Gate</span><span class="label">Email capture gate<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-paywall"><span class="cat">Paywall</span><span class="label">3 tiers · per-day anchoring · free trial · money-back guarantee<span class="unique">★ unique</span></span></div>
+      </div>
+    </div>
+
+    <!-- MR ARTHUR -->
+    <div class="arch-card">
+      <div class="arch-card-header">
+        <a href="https://meltstories.com" target="_blank">Mr Arthur ↗</a>
+        <span class="arch-step-count">9 steps</span>
+      </div>
+      <div class="arch-steps">
+        <div class="arch-step step-entry"><span class="cat">Entry</span><span class="label">18+ consent gate</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-seg"><span class="cat">Segmentation</span><span class="label">Pain gap: current → desired state<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-seg"><span class="cat">Segmentation</span><span class="label">Motivation capture + relationship status</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Likert scales + multi-select desires</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Fantasy &amp; desire mapping</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-co"><span class="cat">Co-Creation</span><span class="label">Content curation / swipe mechanic</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-trust"><span class="cat">Trust &amp; Warmth</span><span class="label">Empathy interstitial · social proof · expert credentialing</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-momentum"><span class="cat">Momentum</span><span class="label">Progress indicator</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-paywall"><span class="cat">Paywall</span><span class="label">"Unlock Melt" — co-created story as locked object<span class="unique">★ unique</span></span></div>
+      </div>
+    </div>
+
+    <!-- PAIRED -->
+    <div class="arch-card">
+      <div class="arch-card-header">
+        <a href="https://www.paired.com/onboarding/passion" target="_blank">Paired ↗</a>
+        <span class="arch-step-count">10 steps</span>
+      </div>
+      <div class="arch-steps">
+        <div class="arch-step step-entry"><span class="cat">Entry</span><span class="label">Age buckets = CTA · "⏱ 2 min quiz" displayed<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-seg"><span class="cat">Segmentation</span><span class="label">Motivation capture + relationship status</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Likert scales + attachment psych framework</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Fantasy &amp; desire mapping</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-co"><span class="cat">Co-Creation</span><span class="label">Content curation / swipe mechanic</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-trust"><span class="cat">Trust &amp; Warmth</span><span class="label">Empathy interstitial · social proof · expert credentialing</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-momentum"><span class="cat">Momentum</span><span class="label">Progress indicator</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-plan"><span class="cat">Plan Builder</span><span class="label">Animated loader + testimonials during load</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-pregate"><span class="cat">Pre-Paywall Gate</span><span class="label">"Thanks for your honesty" screen<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-pregate"><span class="cat">Pre-Paywall Gate</span><span class="label">Result reveal → email / account creation gate</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-paywall"><span class="cat">Paywall</span><span class="label">Paywall</span></div>
+      </div>
+    </div>
+
+    <!-- SENSA -->
+    <div class="arch-card">
+      <div class="arch-card-header">
+        <a href="https://sensa.health/burnout/" target="_blank">Sensa ↗</a>
+        <span class="arch-step-count">8 steps</span>
+      </div>
+      <div class="arch-steps">
+        <div class="arch-step step-entry"><span class="cat">Entry</span><span class="label">Multi-variant entry pages (separate per audience)<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-seg"><span class="cat">Segmentation</span><span class="label">Gender + motivation capture</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Likert scales + multi-select symptoms</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Clinical / psychological framework as quiz spine</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-trust"><span class="cat">Trust &amp; Warmth</span><span class="label">Empathy interstitial · social proof · expert credentialing</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-momentum"><span class="cat">Momentum</span><span class="label">Progress indicator</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-plan"><span class="cat">Plan Builder</span><span class="label">Animated plan-builder loader</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-pregate"><span class="cat">Pre-Paywall Gate</span><span class="label">Named result reveal</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-paywall"><span class="cat">Paywall</span><span class="label">Multiple pricing tiers</span></div>
+      </div>
+    </div>
+
+    <!-- BETTERME RELATIONS -->
+    <div class="arch-card">
+      <div class="arch-card-header">
+        <a href="https://mind.betterme.world/en/first-page-generated?flow=2448" target="_blank">BetterMe Relations ↗</a>
+        <span class="arch-step-count">10 steps</span>
+      </div>
+      <div class="arch-steps">
+        <div class="arch-step step-entry"><span class="cat">Entry</span><span class="label">Age buckets = CTA · time estimate · 18+ consent gate</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-seg"><span class="cat">Segmentation</span><span class="label">Gender + relationship status</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Likert scales + attachment psych framework</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Childhood / parenting diagnostic questions</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-trust"><span class="cat">Trust &amp; Warmth</span><span class="label">Empathy interstitials mid-quiz</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-trust"><span class="cat">Trust &amp; Warmth</span><span class="label">Inline answer personalisation<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-trust"><span class="cat">Trust &amp; Warmth</span><span class="label">Social proof + expert credentialing</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-momentum"><span class="cat">Momentum</span><span class="label">Progress indicator</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-plan"><span class="cat">Plan Builder</span><span class="label">Animated plan-builder loader</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-pregate"><span class="cat">Pre-Paywall Gate</span><span class="label">"Your attachment style" result reveal</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-paywall"><span class="cat">Paywall</span><span class="label">Multiple pricing tiers</span></div>
+      </div>
+    </div>
+
+    <!-- AHEAD -->
+    <div class="arch-card">
+      <div class="arch-card-header">
+        <a href="https://test.ahead-app.com/ahead_funnel_np/age/?fpid=01KJYZF05VR1ACK242AYWQNJRC&amp;fsid=01KJYZF05V8VKW59R9XTZJBGS8" target="_blank">Ahead ↗</a>
+        <span class="arch-step-count">11 steps</span>
+      </div>
+      <div class="arch-steps">
+        <div class="arch-step step-entry"><span class="cat">Entry</span><span class="label">Age buckets = entry CTA</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-seg"><span class="cat">Segmentation</span><span class="label">Gender + focus area multi-select</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Likert scales + multi-select + psych framework</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-needs"><span class="cat">Needs Diagnosis</span><span class="label">Childhood / parenting diagnostic questions</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-trust"><span class="cat">Trust &amp; Warmth</span><span class="label">Inline personalisation after EVERY answer<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-trust"><span class="cat">Trust &amp; Warmth</span><span class="label">Empathy interstitials · social proof · expert credentialing</span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-momentum"><span class="cat">Momentum</span><span class="label">Progress bar + "Your plan is X% ready!" milestone screen<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-co"><span class="cat">Co-Creation</span><span class="label">Daily commitment / intensity selector<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-plan"><span class="cat">Plan Builder</span><span class="label">Loader + testimonials + embedded question inside loader<span class="unique">★ unique</span></span></div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-step step-paywall"><span class="cat">Paywall</span><span class="label">Countdown timer · multi-tier · per-day anchoring · FAQ<span class="unique">★ unique</span></span></div>
+        <div style="margin-top:8px;padding:5px 8px;background:#FEF0F0;border-radius:4px;font-size:10.5px;color:#C0392B;font-weight:600;">⚠ Only funnel with no result reveal before paywall</div>
+      </div>
+    </div>
+
+  </div><!-- /arch-grid -->
 
   <!-- COWORK SECTION -->
   <div class="section-head">Continuing This Project with Claude Co-Work + Code</div>
