@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melba · Webfunnel Strategy Executive Summary</title>
+<style>
+  :root {
+    --accent:   #4B2D8F;
+    --accent2:  #7B52D4;
+    --accent3:  #A87FE8;
+    --light-bg: #F3EFFC;
+    --mid-bg:   #E8E0F8;
+    --dark:     #1A1A2E;
+    --mid:      #555566;
+    --rule:     #C9BEF0;
+    --white:    #FFFFFF;
+    --green:    #2ECC71;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #F7F5FF;
+    color: var(--dark);
+    line-height: 1.5;
+    font-size: 14px;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--accent);
+    padding: 28px 48px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .page-header h1 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  .page-header h1 span { color: #C9B8F0; font-weight: 400; }
+  .page-header .meta { color: #B8A8E8; font-size: 13px; }
+  .header-links { display: flex; gap: 10px; align-items: center; }
+  .header-links a {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background 0.2s;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .header-links a:hover { background: rgba(255,255,255,0.28); }
+
+  /* ── CONTEXT STRIP ── */
+  .context-strip {
+    background: var(--mid-bg);
+    padding: 10px 48px;
+    font-size: 13px;
+    color: var(--mid);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-bottom: 2px solid var(--rule);
+  }
+  .context-strip .funnels { color: var(--accent); font-weight: 700; }
+  .context-strip .dot { color: var(--rule); }
+  .context-strip a { color: var(--accent2); font-weight: 600; text-decoration: underline; }
+  .context-strip .funnel-links a { color: var(--accent); font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--rule); transition: color 0.15s, border-color 0.15s; }
+  .context-strip .funnel-links a:hover { color: var(--accent2); border-color: var(--accent2); }
+
+  /* ── MAIN LAYOUT ── */
+  .container { max-width: 1060px; margin: 0 auto; padding: 36px 48px 60px; }
+
+  /* ── SECTION HEAD ── */
+  .section-head {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+
+  /* ── NON-NEGOTIABLES GRID ── */
+  .nn-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .nn-card {
+    background: var(--light-bg);
+    border-radius: 8px;
+    padding: 16px;
+    border-top: 3px solid var(--accent2);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .nn-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(75,45,143,0.12); }
+  .nn-card h3 { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .nn-card p { font-size: 12px; color: var(--mid); line-height: 1.5; font-style: italic; }
+  .nn-card p strong { color: var(--accent2); font-style: normal; }
+
+  /* ── RECOMMENDATIONS ── */
+  .rec-list { display: flex; flex-direction: column; gap: 12px; }
+  .rec-card {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+  }
+  .rec-card:hover { box-shadow: 0 4px 18px rgba(75,45,143,0.1); }
+  .rec-header {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    user-select: none;
+  }
+  .rec-num {
+    background: var(--accent);
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    width: 52px;
+    min-width: 52px;
+    text-align: center;
+    padding: 20px 0;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rec-title-wrap {
+    padding: 16px 20px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .rec-title { font-size: 15px; font-weight: 700; color: var(--dark); }
+  .rec-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .badge-all  { background: #E8F8F0; color: #27AE60; }
+  .badge-most { background: var(--light-bg); color: var(--accent2); }
+  .badge-few  { background: #FEF3F0; color: #E67E22; }
+  .badge-one  { background: #FEF0F0; color: #E74C3C; }
+  .chevron {
+    margin-left: 12px;
+    font-size: 14px;
+    color: var(--accent2);
+    transition: transform 0.25s;
+  }
+  .rec-card.open .chevron { transform: rotate(180deg); }
+
+  .rec-body {
+    display: none;
+    padding: 0 20px 20px 72px;
+    border-top: 1px solid var(--rule);
+  }
+  .rec-card.open .rec-body { display: block; }
+
+  .rec-desc { color: var(--mid); font-size: 13px; margin: 14px 0 12px; line-height: 1.6; }
+
+  .quotes { border-left: 3px solid var(--accent2); padding-left: 14px; margin: 14px 0; }
+  .quote {
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .quote:last-child { margin-bottom: 0; }
+  .quote .source { color: var(--accent3); font-style: normal; font-size: 11px; }
+
+  .rec-action {
+    background: var(--light-bg);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+  .rec-action strong { color: var(--accent); }
+
+  /* ── QUICK WINS TABLE ── */
+  .qw-table { width: 100%; border-collapse: collapse; }
+  .qw-table thead tr { background: var(--mid-bg); }
+  .qw-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--rule);
+  }
+  .qw-table td {
+    padding: 10px 14px;
+    font-size: 13px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.5;
+  }
+  .qw-table tr:last-child td { border-bottom: none; }
+  .qw-table td:first-child { font-style: italic; color: var(--accent); font-size: 12.5px; background: var(--light-bg); width: 32%; }
+  .qw-table td:nth-child(2) { color: var(--accent2); font-size: 12px; font-weight: 600; width: 20%; }
+  .qw-table td:nth-child(3) { color: var(--mid); width: 48%; }
+  .qw-table tr { transition: background 0.1s; }
+  .qw-table tbody tr:hover td:not(:first-child) { background: #FAF8FF; }
+
+  /* ── COWORK SECTION ── */
+  .cowork-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .cowork-card {
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    padding: 18px 20px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .cowork-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(75,45,143,0.1); }
+  .cowork-card .icon { font-size: 22px; margin-bottom: 10px; }
+  .cowork-card h3 { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .cowork-card p { font-size: 12.5px; color: var(--mid); line-height: 1.55; }
+  .cowork-card .tag {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--light-bg);
+    color: var(--accent2);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
+
+  /* ── LINKS ROW ── */
+  .links-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--mid-bg);
+    border-radius: 8px;
+    flex-wrap: wrap;
+  }
+  .links-row span { color: var(--mid); font-size: 12px; font-weight: 700; }
+  .links-row a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white);
+    color: var(--accent);
+    text-decoration: none;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1.5px solid var(--rule);
+    transition: all 0.2s;
+  }
+  .links-row a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .links-row a .arrow { font-size: 10px; opacity: 0.7; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--rule);
+    padding: 24px 0 0;
+    border-top: 1px solid var(--rule);
+    margin-top: 40px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .container { padding: 24px 20px 48px; }
+    .page-header { padding: 20px 20px 18px; }
+    .context-strip { padding: 10px 20px; }
+    .nn-grid { grid-template-columns: 1fr 1fr; }
+    .cowork-grid { grid-template-columns: 1fr; }
+    .rec-body { padding-left: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="page-header">
+  <div>
+    <h1>MELBA &nbsp;<span>Webfunnel Strategy</span> &nbsp;·&nbsp; Executive Summary</h1>
+    <p class="meta">Based on analysis of 6 competitor funnels &nbsp;·&nbsp; March 2026</p>
+  </div>
+  <div class="header-links">
+    <a href="https://www.notion.so/melba-app/Funnel-Frameworks-318b52ed5e7180ba88a8ed38e8309365" target="_blank">📖 Notion Frameworks</a>
+    <a href="https://docs.google.com/spreadsheets/d/1iKod9ZgGZn7yVn7YuUR85M0y_vT8TGDe8PeLp8D9o1g/edit#gid=1068842855" target="_blank">📊 Comparison Sheets</a>
+  </div>
+</header>
+
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <span class="funnels">6 funnels analysed:</span>
+  <span class="funnel-links">
+    <a href="https://app.beducated.com/funnel/608/intro-gender" target="_blank">Beducated</a>
+    &nbsp;·&nbsp;
+    <a href="https://meltstories.com" target="_blank">Mr Arthur</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.paired.com/onboarding/passion" target="_blank">Paired</a>
+    &nbsp;·&nbsp;
+    <a href="https://sensa.health/burnout/" target="_blank">Sensa</a>
+    &nbsp;·&nbsp;
+    <a href="https://mind.betterme.world/en/first-page-generated?flow=2448" target="_blank">BetterMe Relations</a>
+    &nbsp;·&nbsp;
+    <a href="https://test.ahead-app.com/ahead_funnel_np/age/?fpid=01KJYZF05VR1ACK242AYWQNJRC&amp;fsid=01KJYZF05V8VKW59R9XTZJBGS8" target="_blank">Ahead</a>
+  </span>
+  <span class="dot">·</span>
+  <span>34 psychological tactics mapped</span>
+  <span class="dot">·</span>
+  <span>Full data → <a href="https://www.notion.so/melba-app/Funnel-Frameworks-318b52ed5e7180ba88a8ed38e8309365" target="_blank">Notion</a> &nbsp;·&nbsp; <a href="https://docs.google.com/spreadsheets/d/1iKod9ZgGZn7yVn7YuUR85M0y_vT8TGDe8PeLp8D9o1g/edit#gid=1068842855" target="_blank">Sheets</a></span>
+</div>
+
+<div class="container">
+
+  <!-- NON-NEGOTIABLES -->
+  <div class="section-head">The Non-Negotiable Floor — Present in All 6 Funnels</div>
+  <div class="nn-grid">
+    <div class="nn-card">
+      <h3>Empathy interstitial</h3>
+      <p>A mid-quiz screen that validates without asking anything.<br><strong>Sensa Q4:</strong> <em>"It's natural to feel tired or overwhelmed — we've all been there."</em></p>
+    </div>
+    <div class="nn-card">
+      <h3>Mid-funnel social proof</h3>
+      <p>Inserted at ~65% completion, not on the landing page.<br><strong>Paired:</strong> <em>"91% of couples who talk about sex have better sex."</em></p>
+    </div>
+    <div class="nn-card">
+      <h3>Expert credentialing</h3>
+      <p>Science or authority cited inside the quiz itself.<br><strong>Ahead Step 34:</strong> <em>"Your plan is built on expert guidance."</em></p>
+    </div>
+    <div class="nn-card">
+      <h3>Possessive "your" throughout</h3>
+      <p>Every plan, profile, and result is named as owned by the user.<br><strong>BetterMe:</strong> <em>"Your attachment style personal growth plan."</em></p>
+    </div>
+  </div>
+
+  <!-- RECOMMENDATIONS -->
+  <div class="section-head">5 Priority Recommendations — Click to Expand</div>
+  <div class="rec-list">
+
+    <div class="rec-card" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-num">1</div>
+        <div class="rec-title-wrap">
+          <span class="rec-title">Replace "Get Started" with Age-as-CTA</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="rec-badge badge-most">3 / 6 funnels</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-body">
+        <p class="rec-desc">3 of 6 funnels eliminate the dead "Get started" click entirely. The age buckets <em>are</em> the entry CTA — clicking your age begins the quiz. The user is inside the funnel before they've decided to take it.</p>
+        <div class="quotes">
+          <div class="quote">"18–29 · 30–39 · 40–49 · 50+" — no CTA button anywhere on the page <span class="source">BetterMe entry screen</span></div>
+          <div class="quote">"18–24 · 25–34 · 35–44 · 45+" alongside "⏱ 2 min quiz" <span class="source">Paired entry screen</span></div>
+        </div>
+        <div class="rec-action">
+          <strong>Melba action:</strong> Remove the "Take the quiz" button. Make "How long have you been together?" or age the opening interaction — the first tap starts the experience.
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-card" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-num">2</div>
+        <div class="rec-title-wrap">
+          <span class="rec-title">Insert Empathy Interstitial at the Moment of Disclosure</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="rec-badge badge-all">6 / 6 funnels</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-body">
+        <p class="rec-desc">Every funnel does this, but timing is everything. The interstitial must land <em>after</em> questions that confirm disconnection — not before, not randomly. This is the highest-leverage single screen in any funnel.</p>
+        <div class="quotes">
+          <div class="quote">"We live in a fast-paced, sometimes difficult world. It's natural to feel tired or overwhelmed — we've all been there!" <span class="source">Sensa Q4 — immediately after confirming exhaustion</span></div>
+          <div class="quote">"You're not alone. Key ideas from leading scientists will help you heal." <span class="source">Ahead Step 10 — immediately after trauma multi-select</span></div>
+        </div>
+        <div class="rec-action">
+          <strong>Melba action:</strong> After intimacy or connection scales confirm a gap: <em>"Feeling disconnected is more common than you think. It doesn't have to stay that way — keep going and we'll build something just for the two of you."</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-card" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-num">3</div>
+        <div class="rec-title-wrap">
+          <span class="rec-title">Add Inline Answer Personalisation</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="rec-badge badge-few">2 / 6 funnels</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-body">
+        <p class="rec-desc">Only BetterMe and Ahead do this — and both are the most emotionally engaging funnels in the set. Custom feedback immediately after each answer makes users feel understood <em>before they've downloaded anything</em>. The single biggest differentiator available to Melba.</p>
+        <div class="quotes">
+          <div class="quote">"Happy to hear that! Having parents who listened to your emotions gave you a huge advantage." <span class="source">Ahead Step 8 — positive answer on emotional expression scale</span></div>
+          <div class="quote">"Your caring nature is beautiful. Putting others first shows compassion, but you deserve care too." <span class="source">Ahead Step 16 — answer on boundaries scale</span></div>
+          <div class="quote">"We admire your sense of security, shine on!" <span class="source">BetterMe Phase 2 — adaptive interstitial after help-seeking questions</span></div>
+        </div>
+        <div class="rec-action">
+          <strong>Melba action:</strong> After intimacy openness scale: <em>"That kind of honesty is rare — and it's exactly what builds deeper connection."</em> After low satisfaction: <em>"It takes courage to name that. You're already doing the work."</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-card" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-num">4</div>
+        <div class="rec-title-wrap">
+          <span class="rec-title">Show the Result Before the Paywall</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="rec-badge badge-all">5 / 6 funnels</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-body">
+        <p class="rec-desc">5 of 6 funnels reveal something meaningful — an attachment style, a co-created plan, a named result — before asking for payment. Ahead is the only outlier, compensating with a hard countdown timer. Melba's positioning suits the reveal approach far better.</p>
+        <div class="quotes">
+          <div class="quote">"Your attachment style: Anxiously attached" + plan preview shown before any pricing <span class="source">BetterMe — result reveal before paywall</span></div>
+          <div class="quote">"Creating your relationship plan" loader → plan summary shown → account creation → paywall <span class="source">Paired — full result-reveal-then-gate sequence</span></div>
+          <div class="quote">"Unlock Melt" — co-created story shown as waiting, locked behind payment <span class="source">Mr Arthur — result as the locked object</span></div>
+        </div>
+        <div class="rec-action">
+          <strong>Melba action:</strong> <em>"Here is the intimacy profile we built for you and your partner."</em> Show a partially revealed plan. CTA: <em>"Unlock your couple's plan"</em> — not "Subscribe."
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-card" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-num">5</div>
+        <div class="rec-title-wrap">
+          <span class="rec-title">Rewrite the Paywall as "Unlock", Not "Subscribe"</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="rec-badge badge-few">2 / 6 funnels</span>
+            <span class="chevron">▼</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-body">
+        <p class="rec-desc">"Unlock" implies the content already belongs to the user and is currently withheld. "Subscribe" frames it as a new commercial transaction. Small word, large psychology — the difference between retrieving something yours and buying something foreign.</p>
+        <div class="quotes">
+          <div class="quote">"Unlock Melt" — the user's co-created story is the locked object <span class="source">Mr Arthur paywall CTA</span></div>
+          <div class="quote">"51% discount reserved for: [9:57 countdown]" — "reserved for" implies prior ownership <span class="source">Ahead paywall header</span></div>
+        </div>
+        <div class="rec-action">
+          <strong>Melba action:</strong> Change primary CTA from <em>"Start your subscription"</em> to <em>"Unlock your couple's plan."</em> Add: <em>"Reserved for the next 10 minutes"</em> beneath the pricing tiers to introduce scarcity.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /rec-list -->
+
+  <!-- QUICK WINS -->
+  <div class="section-head">Quick Wins — Wording Changes Only, No Structural Work</div>
+  <table class="qw-table">
+    <thead>
+      <tr>
+        <th>Wording to steal</th>
+        <th>Source</th>
+        <th>Apply in Melba as…</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>"Thanks for your honesty — we're almost there"</td>
+        <td>Paired, pre-paywall interstitial</td>
+        <td>Add immediately before the pricing screen: <em>"You've shared something most couples never say out loud."</em></td>
+      </tr>
+      <tr>
+        <td>"I feel like we're going to break up soon" (1st-person option)</td>
+        <td>BetterMe Q7 satisfaction scale</td>
+        <td>Rewrite all answer options as complete 1st-person sentences — not frequency labels (Never / Sometimes / Often).</td>
+      </tr>
+      <tr>
+        <td>"So what brings you here?" (conversational "So")</td>
+        <td>Paired Q7, Phase 3</td>
+        <td>Open the motivation question with "So…" to signal active listening rather than form-filling.</td>
+      </tr>
+      <tr>
+        <td>"91% of couples who talk about sex have better sex"</td>
+        <td>Paired — interstitial after sex comfort scale</td>
+        <td>Insert a Melba-specific stat at the intimacy gap moment — the precise number does the conversion work.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- COWORK SECTION -->
+  <div class="section-head">Continuing This Project with Claude Co-Work + Code</div>
+  <div class="cowork-grid">
+    <div class="cowork-card">
+      <div class="icon">🕷️</div>
+      <h3>Scrape new funnels on demand</h3>
+      <p>Playwright scripts are already built for Ahead, Paired, and Sensa. Point Claude at any new funnel URL and it will navigate, screenshot every step, and produce a structured analysis in the same format — ready in under 10 minutes.</p>
+      <span class="tag">Ready now</span>
+    </div>
+    <div class="cowork-card">
+      <div class="icon">✍️</div>
+      <h3>Generate A/B copy variants</h3>
+      <p>Using the psychological tactics CSV as a brief, Claude can generate 3–5 wording variants for any Melba screen — empathy interstitials, paywall CTAs, answer options — each labelled by the tactic it activates.</p>
+      <span class="tag">On demand</span>
+    </div>
+    <div class="cowork-card">
+      <div class="icon">📐</div>
+      <h3>Build the Melba funnel draft</h3>
+      <p>Claude can produce a full step-by-step Melba funnel spec — question text, option wording, interstitial copy, paywall layout — as a Word document or Notion page, using this analysis as the blueprint.</p>
+      <span class="tag">Next step</span>
+    </div>
+    <div class="cowork-card">
+      <div class="icon">📡</div>
+      <h3>Monitor competitor updates</h3>
+      <p>Schedule a monthly automated re-scrape of the 6 funnels to detect changes in wording, step count, or paywall structure. Claude will flag differences and update the comparison tables automatically.</p>
+      <span class="tag">Schedulable</span>
+    </div>
+  </div>
+
+  <div class="links-row">
+    <span>Full research:</span>
+    <a href="https://www.notion.so/melba-app/Funnel-Frameworks-318b52ed5e7180ba88a8ed38e8309365" target="_blank">📖 Funnel Frameworks → Notion <span class="arrow">↗</span></a>
+    <a href="https://docs.google.com/spreadsheets/d/1iKod9ZgGZn7yVn7YuUR85M0y_vT8TGDe8PeLp8D9o1g/edit#gid=1068842855" target="_blank">📊 Comparison Tables → Sheets <span class="arrow">↗</span></a>
+    <a href="https://en.melba.app/magazine" target="_blank">🌿 Melba Blog <span class="arrow">↗</span></a>
+  </div>
+
+  <div class="page-footer">
+    Melba Webfunnel Analysis Series · March 2026 · Generated with Claude Co-Work
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  function toggle(card) {
+    card.classList.toggle('open');
+  }
+  // Open first card by default
+  document.querySelector('.rec-card').classList.add('open');
+</script>
+</body>
+</html>
